@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.feng.module</groupId>
+  <artifactId>feng-module</artifactId>
+  <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+
+        <module>execute-task</module>
+        <module>test-starter</module>
+        <module>binding-method</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.boot.version>2.7.15</spring.boot.version>
+    </properties>
+    <!-- 手动引入 Spring Boot 依赖管理（替代 parent 继承） -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot 依赖管理包：统一管理所有 Starter 版本 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.feng.module</groupId>
+                <artifactId>execute-task</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.feng.module</groupId>
+                <artifactId>binding-method</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+            <groupId>com.feng.module</groupId>
+            <artifactId>test-starter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
