@@ -9,7 +9,7 @@
 
         <module>execute-task</module>
         <module>test-starter</module>
-        <module>binding-method</module>
+        <module>binding-task</module>
     </modules>
 
     <properties>
@@ -35,7 +35,7 @@
             </dependency>
             <dependency>
                 <groupId>com.feng.module</groupId>
-                <artifactId>binding-method</artifactId>
+                <artifactId>binding-task</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
