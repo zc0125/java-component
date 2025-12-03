@@ -1,6 +1,67 @@
-# Java工具包
+# 一、Java通用工具包（common-util）
 
-# 方法封装和执行工具（execute-task）
+## 1.1 数字工具
+
+### 1.1.1 数字加解密工具
+
+基于线性同余思想实现的数字加解密工具，可自定义加密生成的类型和长度。例如（数字->数字，数字->字符串）
+
+核心优势：速度快+可自定义结果类型和长度
+
+使用场景：id转换成虚拟id、短链生成、邀请码生成、简单场景的数字加密传输
+
+使用参考
+
+```java
+public static void main(String[] args) {
+    NumberLCGEncryptor numberLCGEncryptor = new NumberLCGEncryptor() {
+        /**
+         * 定义混淆key(每个key的长度应是一致的)
+         */
+        @Override
+        String[] defineKeys() {
+            return new String[]{
+                    "P", "o", "2", "A", "f", "3", "r", "T", "J", "4", "d", "t",
+                    "x", "Z", "S", "c", "F", "7", "z", "m", "H", "V", "M", "8",
+                    "K", "W", "C", "b", "Q", "B", "u", "e", "X", "v", "k", "w",
+                    "s", "O", "Y", "a", "h", "j", "N", "p", "L", "D", "6", "E",
+                    "q", "l", "I", "R", "1", "U", "g", "G", "9", "i", "n", "y",
+                    "5"
+            };
+        }
+        /**
+         * 定义生成组数(最终加密结果长度为：return * 单个key的长度)
+         */
+        @Override
+        int defineMinLength() {
+            return 5;
+        }
+        /**
+         * 定义前缀值(前缀值+加密数字不能大于Long.MAX_VALUE)
+         */
+        @Override
+        long definePrefix() {
+            return 10000;
+        }
+    };
+    // 测试加密解密
+    long original = 123456;
+    String encrypted = numberLCGEncryptor.encryption(original);
+    Long decrypted = numberLCGEncryptor.decrypt(encrypted);
+
+    System.out.println("原始值: " + original);
+    System.out.println("加密后: " + encrypted);
+    System.out.println("解密后: " + decrypted);
+    System.out.println("是否匹配: " + (decrypted.intValue() == original));
+
+    for (int i = 0; i < 1000; i++) {
+        // 查看加密结果
+        System.out.println(numberLCGEncryptor.encryption(i));
+    }
+}
+```
+
+# 二、方法封装和执行工具（execute-task）
 
 ## 背景
 在java中对于方法封装，并作为对象类型传递，没有比较简单并好用的工具。
@@ -59,7 +120,7 @@ for (TaskResult<String> result : taskResults) {
 ```
 
 
-# 方法绑定工具（binding-task）
+# 三、方法绑定工具（binding-task）
 
 ## 背景
 

@@ -10,6 +10,7 @@
         <module>execute-task</module>
         <module>test-starter</module>
         <module>binding-task</module>
+        <module>common-util</module>
     </modules>
 
     <properties>
@@ -36,6 +37,11 @@
             <dependency>
                 <groupId>com.feng.module</groupId>
                 <artifactId>binding-task</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.feng.module</groupId>
+                <artifactId>common-util</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
